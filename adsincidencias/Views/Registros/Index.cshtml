@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewBag.user = ViewBag.userSession;
+}
+
+    
+        <div id="menuRegistros" class="row col-lg-offset-2">
+            <a href=@Url.Action("RegistrarUsuarios","RegUsuarios")>
+                <div class="col-lg-3">
+                    <div class="thumbnail">
+                        <img src="~/imagenes/newuser.png" width="128" height="128" alt="nuevo usuario" class="img-responsive" />
+                        <div class="caption">
+                            <h2>Registrar nuevos usuarios</h2>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="">
+                <div class="col-lg-3">
+                    <div class="thumbnail">
+                        <img src="~/imagenes/newtech.png" width="128" height="128" alt="nuevo tecnico" class="img-responsive" />
+                        <div class="caption">
+                            <h2>Registrar nuevos técnicos</h2>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="">
+                <div class="col-lg-3">
+                    <div class="thumbnail">
+                        <img src="~/imagenes/newcompany.png" width="128" height="128" alt="nueva empresa" class="img-responsive" />
+                        <div class="caption">
+                            <h2>Registrar nuevas empresas</h2>
+                        </div>
+                    </div>
+                </div>
+             </a>
+</div>
+
+ 

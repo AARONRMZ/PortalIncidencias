@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="adsincidenciasDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Empresas">
+          <Key>
+            <PropertyRef Name="empID" />
+          </Key>
+          <Property Name="empID" Type="int" Nullable="false" />
+          <Property Name="empNombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="empCalle" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="empNumInt" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="empNumExt" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="empColonia" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="empPais" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="empRFC" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="empCodPos" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="empTel1" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="empTel2" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="empExt1" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="empExt2" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="empLatitud" Type="float" Nullable="false" />
+          <Property Name="empLongitud" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usrApPaterno" Type="varchar" MaxLength="50" />
+          <Property Name="usrApMaterno" Type="varchar" MaxLength="50" />
+          <Property Name="usrNombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="usrCorreo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="usrNombreUsusario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="usrContrasena" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="usrEmpresaID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_UsuarioEmpresa">
+          <End Role="Empresas" Type="Self.Empresas" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresas">
+              <PropertyRef Name="empID" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="usrEmpresaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="adsincidenciasDBModelStoreContainer">
+          <EntitySet Name="Empresas" EntityType="Self.Empresas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_UsuarioEmpresa" Association="Self.FK_UsuarioEmpresa">
+            <End Role="Empresas" EntitySet="Empresas" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="adsincidenciasDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="adsincidenciasDBModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Usuarios" EntityType="adsincidenciasDBModel.Usuario" />
+          <EntitySet Name="Empresas" EntityType="adsincidenciasDBModel.Empresa" />
+          <AssociationSet Name="FK_UsuarioEmpresa" Association="adsincidenciasDBModel.FK_UsuarioEmpresa">
+            <End Role="Empresa" EntitySet="Empresas" />
+            <End Role="Usuario" EntitySet="Usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usrNombre" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="usrCorreo" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="usrNombreUsusario" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="usrContrasena" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="usrEmpresaID" Type="Int32" Nullable="false" />
+          <Property Name="usrApPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usrApMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Empresas" Relationship="adsincidenciasDBModel.FK_UsuarioEmpresa" FromRole="Usuario" ToRole="Empresa" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="empID" />
+          </Key>
+          <Property Name="empNombre" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="empID" Type="Int32" Nullable="false" />
+          <Property Name="empCalle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="empNumInt" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="empNumExt" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="empColonia" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="empPais" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="empRFC" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="empCodPos" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="empTel1" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="empTel2" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="empExt1" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="empExt2" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="empLatitud" Type="Double" Nullable="false" />
+          <Property Name="empLongitud" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Usuarios" Relationship="adsincidenciasDBModel.FK_UsuarioEmpresa" FromRole="Empresa" ToRole="Usuario" />
+        </EntityType>
+        <Association Name="FK_UsuarioEmpresa">
+          <End Type="adsincidenciasDBModel.Empresa" Role="Empresa" Multiplicity="1" />
+          <End Type="adsincidenciasDBModel.Usuario" Role="Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="empID" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="usrEmpresaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="adsincidenciasDBModelStoreContainer" CdmEntityContainer="adsincidenciasDBModelContainer">
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="IsTypeOf(adsincidenciasDBModel.Usuario)">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="usrApMaterno" ColumnName="usrApMaterno" />
+                <ScalarProperty Name="usrApPaterno" ColumnName="usrApPaterno" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="usrNombre" ColumnName="usrNombre" />
+          <ScalarProperty Name="usrCorreo" ColumnName="usrCorreo" />
+          <ScalarProperty Name="usrNombreUsusario" ColumnName="usrNombreUsusario" />
+          <ScalarProperty Name="usrContrasena" ColumnName="usrContrasena" />
+          <ScalarProperty Name="usrEmpresaID" ColumnName="usrEmpresaID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empresas">
+      <EntityTypeMapping TypeName="IsTypeOf(adsincidenciasDBModel.Empresa)">
+        <MappingFragment StoreEntitySet="Empresas">
+          <ScalarProperty Name="empLongitud" ColumnName="empLongitud" />
+                <ScalarProperty Name="empLatitud" ColumnName="empLatitud" />
+                <ScalarProperty Name="empExt2" ColumnName="empExt2" />
+                <ScalarProperty Name="empExt1" ColumnName="empExt1" />
+                <ScalarProperty Name="empTel2" ColumnName="empTel2" />
+                <ScalarProperty Name="empTel1" ColumnName="empTel1" />
+                <ScalarProperty Name="empCodPos" ColumnName="empCodPos" />
+                <ScalarProperty Name="empRFC" ColumnName="empRFC" />
+                <ScalarProperty Name="empPais" ColumnName="empPais" />
+                <ScalarProperty Name="empColonia" ColumnName="empColonia" />
+                <ScalarProperty Name="empNumExt" ColumnName="empNumExt" />
+                <ScalarProperty Name="empNumInt" ColumnName="empNumInt" />
+                <ScalarProperty Name="empCalle" ColumnName="empCalle" />
+                <ScalarProperty Name="empID" ColumnName="empID" />
+                <ScalarProperty Name="empNombre" ColumnName="empNombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

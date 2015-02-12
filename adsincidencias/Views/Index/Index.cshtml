@@ -1,0 +1,138 @@
+﻿@{
+    ViewBag.Title = "ADS | Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="header" class="container">
+
+    <div class="page-header">
+        <h1 align="center">Asistencia y Desarrollo de Sistemas, S.A. de C.V.</h1>
+        <div class="row">
+            <div id="carousel-index" class="carousel slide" data-ride="carousel" data-interval="3000">
+                <!--indicadores-->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-index" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-index" data-slide-to="1"></li>
+                    <li data-target="#carousel-index" data-slide-to="2"></li>
+                </ol>
+
+                <!--Wrapper de slides-->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img src="imagenes/slider1.jpg" alt="1" class="slide-img img-responsive">
+                        <br><br><br><br><br><br><br><br><br>
+                        <div class="carousel-caption">
+                            <h3>Sistemas Aspel</h3>
+                            <p>Una manera sencilla y practica de organizar tu empresa.</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="imagenes/slider2.jpg" alt="2" class="slide-img img-responsive">
+                        <br><br><br><br><br><br><br><br><br>
+                        <div class="carousel-caption">
+                            <h3>Panasonic Partner</h3>
+                            <p>Productos de calidad y confiabilidad.</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="imagenes/slider3.jpg" alt="3" class="slide-img img-responsive">
+                        <br><br><br><br><br><br><br><br><br>
+                        <div class="carousel-caption">
+                            <h3>Panasonic toughbook</h3>
+                            <p>Equipos para uso rudo, durabilidad y confiabilidad.</p>
+                        </div>
+                    </div>
+                </div>
+                <!--controls-->
+                <a href="#carousel-index" class="left carousel-control" data-slide="prev">
+                    <span class="icon-prev"></span>
+                </a>
+                <a href="#carousel-index" class="right carousel-control" data-slide="next">
+                    <span class="icon-next"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="main" class="col-md-11 col-md-offset-1">
+    <div class="row">
+        <div class="col-md-4 col-sm-6">
+            <div class="thumbnail">
+                <a href="" data-toggle="modal" data-target="#imgModal1"><img src="imagenes/panasonic-toughbook.jpg" alt="panasonic toughbook" class="pull-down home-img img-responsive"></a>
+                <div class="caption">
+                    <h2>Panasonic Partner</h2>
+                    <p>
+                        Con los equipos de uso rudo panasonic la durabilidad es de otro nivel.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <div class="thumbnail">
+                <a href="" data-toggle="modal" data-target="#imgModal2"><img src="imagenes\software-box.png" alt="sis-joy" class="pull-down home-img img-responsive"></a>
+                <div class="caption">
+                    <h2>Sis JOY</h2>
+                    <p>
+                        El sisttema de joyeria numero uno en el mercado.
+                        La Solución Exacta para su Joyería.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <div class="thumbnail">
+                <a href="" data-toggle="modal" data-target="#imgModal3"><img src="imagenes/contpaq-cont.jpg" alt="contpaq" class="pull-down home-img img-responsive"></a>
+                <div class="caption">
+                    <h1>Contpaq</h1>
+                    <p>
+                        En CONTPAQ i® desarrollamos y comercializamos Software Empresarial fácil y completo que ayuda a las 	personas a ser más productivas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modales">
+        <div id="imgModal1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLebel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title">Toughbook CF-53</h4>
+                        </div>
+                        <img src="imagenes/panasonic-toughbook.jpg" alt="panasonic toughbook" class="img-responsive img-rounded center-block">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="imgModal2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLebel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title">Sis Joy 4.0</h4>
+                        </div>
+                        <img src="imagenes\software-box.png" alt="sis-joy" class="img-responsive img-rounded center-block">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="imgModal3" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLebel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title">Contpaq i</h4>
+                        </div>
+                        <img src="imagenes/contpaq-cont.jpg" alt="contpaq" class="img-responsive img-rounded center-block">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

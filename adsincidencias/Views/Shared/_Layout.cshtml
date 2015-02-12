@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/Bootstrap/bootstrap.min.css")
+    @Styles.Render("~/Content/Bootstrap/cerulean-bootstrap.min.css")
+    @Styles.Render("~/Content/Site.css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/Scripts/jquery-1.11.2.min.js")
+    @Scripts.Render("~/Scripts/bootstrap.min.js")
+    <link rel="shortcut icon" href="imagenes/ads.ico" />
+</head>
+<body>
+    @RenderBody()
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+
+    
+        <header class="container">
+            <div id="menu" class="navbar navbar-default navbar-fixed-top col-lg-12 ">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>  
+                        @*<a class="navbar-brand" href="#">
+                            <img src="~/imagenes/logoads.jpg" alt="logo ads">
+                        </a>*@
+                    <a class="navbar-brand" href="#">Logo</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-lefth">
+                        <li class="nav"><a href=@Url.Action("Index","Index")>Home</a></li>
+                        <li class="dropdown">
+                            <a class="drop-down-toggle" data-toggle="dropdown" href="#">
+                                Sistemas ADSoft, SC.
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href=@Url.Action("Index","SisJoy")>SisJoy ADSoft</a></li>
+                                <li class="divider"></li>
+                                <li><a href=@Url.Action("Index","Ordser")>OrdSer ADSoft</a></li>
+                                <li class="divider"></li>
+                                <li><a href=@Url.Action("Index","Siscom")>SisCom ADSoft</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="drop-down-toggle" data-toggle="dropdown" href="#">Sistemas Aspel <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href=@Url.Action("Index","Bancoaspel")>Banco Aspel</a></li>
+                                <li class="divider"></li>
+                                <li><a href=@Url.Action("Index","COIaspel")>COI Aspel</a></li>
+                                <li class="divider"></li>
+                                <li><a href=@Url.Action("Index","Cajaaspel")>Caja Aspel</a></li>
+                                <li class="divider"></li>
+                                <li><a href=@Url.Action("Index","Facturaaspel")>Factur-e Aspel</a></li>
+                                <li class="divider"></li>
+                                <li><a href=@Url.Action("Index","NOIaspel")>NOI Aspel</a></li>
+                                <li class="divider"></li>
+                                <li><a href=@Url.Action("Index","Prodaspel")>Producción Aspel</a></li>
+                                <li class="divider"></li>
+                                <li><a href=@Url.Action("Index","SAEaspel")>SAE Aspel</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="drop-down-toggle" data-toggle="dropdown" href="#">Sistemas Contpaq i <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href=@Url.Action("Index","Adminpaq")>Adminpaq Contpaq i</a></li>
+                                <li class="divider"></li>
+                                <li><a href=@Url.Action("Index","Bancos")>Bancos Contpaq i</a></li>
+                                <li class="divider"></li>
+                                <li><a href=@Url.Action("Index","Contpaq")>Contabilidad Contpaq i</a></li>
+                                <li class="divider"></li>
+                                <li><a href=@Url.Action("Index","Factura")>Factura CBB Contpaq i</a></li>
+                                <li class="divider"></li>
+                                <li><a href=@Url.Action("Index","Facturae")>Factura Electrónica Contpaq i</a></li>
+                                <li class="divider"></li>
+                                <li><a href=@Url.Action("Index","Nomina")>Nominas Contpaq i</a></li>
+                                <li class="divider"></li>
+                                <li><a href=@Url.Action("Index","Puntodeventa")>Punto de venta Contpaq i</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="drop-down-toggle" data-toggle="dropdown" href="#">Toughbook - Panasonic<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href=@Url.Action("Index","Toughpad")>TOUGHPAD Panasonic</a></li>
+                                <li class="divider"></li>
+                                <li><a href=@Url.Action("Index","Cf19")>TOUGHBOOK CF-19 Panasonic</a></li>
+                                <li class="divider"></li>
+                                <li><a href=@Url.Action("Index","Cf31")>TOUGHBOOK CF-31 Panasonic</a></li>
+                                <li class="divider"></li>
+                                <li><a href=@Url.Action("Index","Cf53")>TOUGHBOOK CF-53 Panasonic</a></li>
+                                <li class="divider"></li>
+                                <li><a href=@Url.Action("Index","Cfh2")>TOUGHBOOK CF-H2 Panasonic</a></li>
+                                <li class="divider"></li>
+                                <li><a href=@Url.Action("Index","U1")>TOUGHBOOK CF-U1 Panasonic</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav"><a href=@Url.Action("Index","Acercade")>Acerca de</a></li>
+                        <li class="nav"><a href=@Url.Action("Index","Contacto")>Contacto</a></li>
+                    </ul>
+                    <ul class="navbar-nav navbar-right">
+                        <li class="nav"><a id="Login" class="btn" href=@Url.Action("Login","Login")><span class="glyphicon glyphicon-log-in"></span>&nbsp;Iniciar session</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        
+        <footer class="container text-center">
+            <hr>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="col-md-6">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="panasonic-toughbook">Panasonic toughbook</a></li>
+                            <li><a href="sistemas-adsoft">Sistemas ADSoft, SC</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="panasonic-toughbook">Sistemas Aspel</a></li>
+                            <li><a href="sistemas-adsoft">Sistemas Contpaq i</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="nav nav-pills nav-justified">
+                        <li><a href="contacto.html#mapa">San Nicolas de los Garza N.L. 8334.8074 / 8141.0173</a></li>
+                        <li><a href="http://www.aramirez.16mb.com/">Powered by Aarón Ramírez</a></li>
+                    </ul>
+                    <br>
+                </div>
+            </div>
+        </footer>
+</body>
+</html>

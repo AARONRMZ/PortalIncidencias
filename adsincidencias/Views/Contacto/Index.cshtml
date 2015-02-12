@@ -1,0 +1,120 @@
+﻿@{
+    ViewBag.Title = "ADS | Contacto Aspel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="main" class="col-md-11 col-md-offset-1">
+    <h1>Contacto</h1>
+    <p>¿Necesitas información? Envianos tus datos y en breve nos comunicaremos contigo.</p>
+    <div class="col-md-6">
+        <h3>Contacto eléctronico</h3>
+        <form action="">
+            <div class="form-group" id="contactForm">
+                <label for="nameInput">Nombre</label>
+                <input type="text" name="nameInput" class="form-control" placeholder="e.j. Mi nombre">
+            </div>
+            <div class="form-group">
+                <label for="emailInput">E-mail</label>
+                <input type="text" name="emailInput" class="form-control" placeholder="e.j. Mi E-mail">
+            </div>
+            <div class="form-group">
+                <label for="temaSelect">Tema</label>
+                <select name="temaSelect" id="tema" class="form-control">
+                    <option value="Cotizacion Software">Cotización Software</option>
+                    <option value="Cotizacion Hardware">Cotización Hardware</option>
+                    <option value="Sugerencias">Sugerencias</option>
+                    <option value="Quejas">Quejas</option>
+                    <option value="Otros">Otros</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="mensajeArea">Mensaje</label>
+                <textarea cols="40" rows="21" class="form-control" placeholder="e.j. Mi mensaje"></textarea>
+            </div>
+            <!--<input type="submit" value="Enviar" class="btn btn-success">-->
+            <a href="#formAlert" class="btn btn-success" data-toggle="modal">Enviar</a>
+
+        </form>
+    </div>
+    <div class="col-md-6 panel-group">
+        <h3>Contacto teléfonico</h3>
+        <div class="panel-group" id="acordionContactos">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a href="#ventas" data-toggle="collapse" data-parent="#acordionContactos">Ventas</a>
+                    </h4>
+                </div>
+                <div id="ventas" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <h6>Ing. Victor Dominguez Cantú</h6>
+                        <br>
+                        <span class="glyphicon glyphicon-phone-alt">&nbsp(81)&nbsp8334.8074&nbspext.103</span>
+                        <br>
+                        <span class="glyphicon glyphicon-phone">&nbsp8115.9940.30</span>
+                        <br>
+                        <span class="glyphicon glyphicon-envelope">&nbspvdc@adsistemas.com.mx</span>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a href="#soporteSistemas" data-toggle="collapse" data-parent="#acordionContactos">Soporte sistemas</a>
+                    </h4>
+                </div>
+                <div id="soporteSistemas" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <h6>Ing. Victor Dominguez Cantú</h6>
+                        <br>
+                        <span class="glyphicon glyphicon-phone-alt">&nbsp(81)&nbsp8334.8074&nbspext.103</span>
+                        <br>
+                        <span class="glyphicon glyphicon-phone">&nbsp8115.9940.30</span>
+                        <br>
+                        <span class="glyphicon glyphicon-envelope">&nbspvdc@adsistemas.com.mx</span>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a href="#soporteCompu" data-toggle="collapse" data-parent="#acordionContactos">Soporte equipo de computo</a>
+                    </h4>
+                </div>
+                <div id="soporteCompu" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <h6>Ing. Americo Cavazos</h6>
+                        <br>
+                        <span class="glyphicon glyphicon-phone-alt">&nbsp(81)&nbsp8334.8074&nbspext.108</span>
+                        <br>
+                        <span class="glyphicon glyphicon-phone">&nbsp8115.9940.30</span>
+                        <br>
+                        <span class="glyphicon glyphicon-envelope">&nbspacg@adsistemas.com.mx</span>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a href="#admin" data-toggle="collapse" data-parent="#acordionContactos">Administración</a>
+                    </h4>
+                </div>
+                <div id="admin" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <h6>Ing. Martín Melendez Rodriguez</h6>
+                        <br>
+                        <span class="glyphicon glyphicon-phone-alt">&nbsp(81)&nbsp8334.8074&nbspext.107</span>
+                        <br>
+                        <span class="glyphicon glyphicon-phone">&nbsp8115.9940.30</span>
+                        <br>
+                        <span class="glyphicon glyphicon-envelope">&nbspmmr@adsistemas.com.mx</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="mapa" class="col-md-6">
+        <h3>Ubicación</h3>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3594.575949965246!2d-100.2288933!3d25.7184605!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662eae5061421d7%3A0xedb11b4f093e1520!2sRayados+101%2C+Paseo+de+Los+Angeles%2C+Residencial+Paseo+de+los+%C3%81ngeles%2C+66470+San+Nicol%C3%A1s+de+Los+Garza%2C+NL!5e0!3m2!1ses!2smx!4v1420558194123" width="573" height="450" frameborder="0" style="border:0"></iframe>
+</section>
