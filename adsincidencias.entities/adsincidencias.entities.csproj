@@ -46,29 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="adsincidenciasDBModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>adsincidenciasDBModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="adsincidenciasDBModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>adsincidenciasDBModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="adsincidenciasDBModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>adsincidenciasDBModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Class1.cs" />
-    <Compile Include="Empresa.cs">
-      <DependentUpon>adsincidenciasDBModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Usuario.cs">
-      <DependentUpon>adsincidenciasDBModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Repositories\EmpresasRepository.cs" />
+    <Compile Include="Repositories\ProductosRepository.cs" />
+    <Compile Include="Repositories\RolesRepository.cs" />
+    <Compile Include="Repositories\TecnicosRepository.cs" />
+    <Compile Include="Repositories\UsuariosRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="adsincidenciasDBModel.edmx">
@@ -77,18 +66,9 @@
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
-    <None Include="adsincidenciasDBModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>adsincidenciasDBModel.Context.cs</LastGenOutput>
-      <DependentUpon>adsincidenciasDBModel.edmx</DependentUpon>
-    </None>
     <None Include="adsincidenciasDBModel.edmx.diagram">
       <DependentUpon>adsincidenciasDBModel.edmx</DependentUpon>
-    </None>
-    <None Include="adsincidenciasDBModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>adsincidenciasDBModel.cs</LastGenOutput>
-      <DependentUpon>adsincidenciasDBModel.edmx</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
     <None Include="App.Config" />
     <None Include="packages.config" />

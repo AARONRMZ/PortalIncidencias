@@ -1,0 +1,102 @@
+﻿
+@model adsincidencias.entities.Empresa
+
+@{
+    ViewBag.Title = "Crear";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row">
+    <div id="panel" class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h2>Registro de nueva empresa</h2>
+            </div>
+            <form method="post" id="formCrearEmpresa" class="form-horizontal" role="form" data-toggle="validator">
+                <div class="panel-body">
+                    @if (!string.IsNullOrEmpty(ViewBag.Msg))
+                    {
+                        <div class="alert alert-success alert-dismissible" role="alert">
+                            @ViewBag.Msg
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                    }
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"></span>
+                        @Html.TextBoxFor(e => e.empNombre, new Dictionary<string, Object> { { "class", "form-control" }, { "id", "nombreInput" }, { "type", "text" }, { "name", "nombreInput" }, { "placeholder", "Nombre" }, { "required", "" } })
+                    </div>
+                    <div style="margin-bottom: 25px;" class="input-group">
+                        <span class="input-group-addon"></span>
+                        @Html.TextBoxFor(e => e.empCalle, new Dictionary<string, Object> { { "class", "form-control" }, { "id", "calleInput" }, { "type", "text" }, { "name", "calleInput" }, { "placeholder", "Calle" }, { "required", "" } })
+                    </div>
+                    <div style="margin-bottom: 25px;" class="input-group">
+                        <span class="input-group-addon"></span>
+                        @Html.TextBoxFor(e => e.empNumInt, new Dictionary<string, Object> { { "class", "form-control" }, { "id", "numeroIntInput" }, { "type", "text" }, { "name", "numeroIntInput" }, { "placeholder", "Numero Interior" }, { "required", "" } })
+                    </div>
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"></span>
+                        @Html.TextBoxFor(e => e.empNumExt, new Dictionary<string, Object> { { "class", "form-control" }, { "id", "numeroExtInput" }, { "type", "text" }, { "name", "numeroExtInput" }, { "placeholder", "Numero Exterior" }, { "required", "" } })
+                    </div>
+                    <div style="margin-bottom: 25px;" class="input-group">
+                        <span class="input-group-addon"></span>
+                        @Html.TextBoxFor(e => e.empColonia, new Dictionary<string, Object> { { "class", "form-control" }, { "id", "colonia" }, { "type", "text" }, { "name", "colonia" }, { "placeholder", "Colonia" }, { "required", "" } })
+                    </div>
+                    <div style="margin-bottom: 25px;" class="input-group">
+                        <span class="input-group-addon"></span>
+                        @Html.TextBoxFor(e => e.empMunicipio, new Dictionary<string, Object> { { "class", "form-control" }, { "id", "Municipio" }, { "type", "text" }, { "name", "Municipio" }, { "placeholder", "Municipio" }, { "required", "" } })
+                    </div>
+                    <div style="margin-bottom: 25px;" class="input-group">
+                        <span class="input-group-addon"></span>
+                        @Html.TextBoxFor(e => e.empEstado, new Dictionary<string, Object> { { "class", "form-control" }, { "id", "Estado" }, { "type", "text" }, { "name", "Estado" }, { "placeholder", "Estado" }, { "required", "" } })
+                    </div>
+                    <div style="margin-bottom: 25px;" class="input-group">
+                        <span class="input-group-addon"></span>
+                        @Html.TextBoxFor(e => e.empPais, new Dictionary<string, Object> { { "class", "form-control" }, { "id", "pais" }, { "type", "text" }, { "name", "pis" }, { "placeholder", "País" }, { "required", "" } })
+                    </div>
+
+                    <div style="margin-bottom: 25px;" class="input-group">
+                        <span class="input-group-addon"></span>
+                        @Html.TextBoxFor(e => e.empRFC,new Dictionary<string, Object> { { "class", "form-control" }, { "id", "RFC" }, { "type", "text" }, { "name", "RFC" }, { "placeholder", "RFC" }, { "required", "" } })
+                    </div>
+
+                    <div style="margin-bottom: 25px;" class="input-group">
+                        <span class="input-group-addon"></span>
+                        @Html.TextBoxFor(e => e.empCodPos, new Dictionary<string, Object> { { "class", "form-control" }, { "id", "codposInput" }, { "type", "text" }, { "name", "codposInput" }, { "placeholder", "Codigo Postal" }, { "required", "" } })
+                    </div>
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"></span>
+                        @Html.TextBoxFor(e => e.empTel1, new Dictionary<string, Object> { { "class", "form-control" }, { "id", "tel1" }, { "type", "text" }, { "name", "tel1" }, { "placeholder", "Teléfono 1" }, { "required", "" } })
+                    </div>
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"></span>
+                        @Html.TextBoxFor(e => e.empTel2, new Dictionary<string, Object> { { "class", "form-control" }, { "id", "tel2" }, { "type", "text" }, { "name", "tel2" }, { "placeholder", "Teléfono 2" }, { "required", "" } })
+                    </div>
+                    
+                    @if (!string.IsNullOrEmpty(ViewBag.Error))
+                    {
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            @ViewBag.Error
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                    }
+
+                </div>
+                <div class="panel-footer">
+                    <div style="margin-top:10px" class="form-group row">
+                        <div class="col-lg-3 col-lg-offset-9 col-md-4 col-md-offset-8 col-sm-5 col-sm-offset-8 col-xs-10 col-xs-offset-2">
+                            <button type="submit" class="btn" value="" id="btnGuardarUsuario" data-toggle="tooltip" data-placement="left" title="Guardar">
+                                <span class="glyphicon glyphicon-ok"></span>
+                            </button>
+                            <button type="reset" class="btn" value="" id="btnCancelarUsuario" data-toggle="tooltip" data-placement="left" title="Cancelar">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+

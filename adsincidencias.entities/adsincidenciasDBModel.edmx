@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="empID" />
           </Key>
-          <Property Name="empID" Type="int" Nullable="false" />
+          <Property Name="empID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="empNombre" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="empCalle" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="empNumInt" Type="varchar" MaxLength="10" Nullable="false" />
@@ -18,26 +18,205 @@
           <Property Name="empPais" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="empRFC" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="empCodPos" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="empTel1" Type="varchar" MaxLength="15" Nullable="false" />
-          <Property Name="empTel2" Type="varchar" MaxLength="15" Nullable="false" />
-          <Property Name="empExt1" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="empExt2" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="empLatitud" Type="float" Nullable="false" />
-          <Property Name="empLongitud" Type="float" Nullable="false" />
+          <Property Name="empTel1" Type="varchar" MaxLength="15" />
+          <Property Name="empTel2" Type="varchar" MaxLength="15" />
+          <Property Name="empExt1" Type="varchar" MaxLength="10" />
+          <Property Name="empExt2" Type="varchar" MaxLength="10" />
+          <Property Name="empLatitud" Type="float" />
+          <Property Name="empLongitud" Type="float" />
+          <Property Name="empMunicipio" Type="varchar" MaxLength="80" />
+          <Property Name="empEstado" Type="varchar" MaxLength="80" />
+        </EntityType>
+        <EntityType Name="Estatus">
+          <Key>
+            <PropertyRef Name="estaID" />
+          </Key>
+          <Property Name="estaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="estaDescripcion" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="incidenciaDetalle">
+          <Key>
+            <PropertyRef Name="inciDetID" />
+          </Key>
+          <Property Name="inciDetID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="inciDetIncidncia" Type="int" Nullable="false" />
+          <Property Name="inciDetDescripcion" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="inciDetHoras" Type="int" Nullable="false" />
+          <Property Name="inciDetUsr" Type="int" Nullable="false" />
+          <Property Name="inciDetFecha" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Incidencias">
+          <Key>
+            <PropertyRef Name="inciID" />
+          </Key>
+          <Property Name="inciID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="inciProducto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="inciUsuarioAlta" Type="int" Nullable="false" />
+          <Property Name="inciFechaAlta" Type="datetime" Nullable="false" />
+          <Property Name="inciFechaCierre" Type="datetime" Nullable="false" />
+          <Property Name="inciDescripcion" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="inciTecnico" Type="int" Nullable="false" />
+          <Property Name="inciEstatus" Type="int" Nullable="false" />
+          <Property Name="inciUsrCierre" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="prodID" />
+          </Key>
+          <Property Name="prodID" Type="int" Nullable="false" />
+          <Property Name="prodNombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="prodTipo" Type="int" Nullable="false" />
+          <Property Name="prodDescripcion" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="prodObservaciones" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="RolesUsuarios">
+          <Key>
+            <PropertyRef Name="rolID" />
+          </Key>
+          <Property Name="rolID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rolDescripcion" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tecnicos">
+          <Key>
+            <PropertyRef Name="tecID" />
+          </Key>
+          <Property Name="tecID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tecProducto" Type="int" Nullable="false" />
+          <Property Name="tecApPaterno" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tecApMaterno" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tecNombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tecNombreUsusario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tecContrasena" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tecRol" Type="int" Nullable="false" />
+          <Property Name="tecCorreo" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TiposProductos">
+          <Key>
+            <PropertyRef Name="tipoProdID" />
+          </Key>
+          <Property Name="tipoProdID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipoProdDescripcion" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Usuarios">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="usrApPaterno" Type="varchar" MaxLength="50" />
-          <Property Name="usrApMaterno" Type="varchar" MaxLength="50" />
+          <Property Name="usrApPaterno" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="usrApMaterno" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="usrNombre" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="usrCorreo" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="usrNombreUsusario" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="usrContrasena" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="usrEmpresaID" Type="int" Nullable="false" />
+          <Property Name="usrRol" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_incidenciaDetalle_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="incidenciaDetalle" Type="Self.incidenciaDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="incidenciaDetalle">
+              <PropertyRef Name="inciDetUsr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incidencias_Estatus">
+          <End Role="Estatus" Type="Self.Estatus" Multiplicity="1" />
+          <End Role="Incidencias" Type="Self.Incidencias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estatus">
+              <PropertyRef Name="estaID" />
+            </Principal>
+            <Dependent Role="Incidencias">
+              <PropertyRef Name="inciEstatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incidencias_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Incidencias" Type="Self.Incidencias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incidencias">
+              <PropertyRef Name="inciTecnico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incidencias_Usuarios1">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Incidencias" Type="Self.Incidencias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incidencias">
+              <PropertyRef Name="inciUsrCierre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incidencias_Usuarios2">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Incidencias" Type="Self.Incidencias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incidencias">
+              <PropertyRef Name="inciUsuarioAlta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Productos_TiposProductos">
+          <End Role="TiposProductos" Type="Self.TiposProductos" Multiplicity="1" />
+          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposProductos">
+              <PropertyRef Name="tipoProdID" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="prodTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tecnicos_TiposProductos">
+          <End Role="TiposProductos" Type="Self.TiposProductos" Multiplicity="1" />
+          <End Role="Tecnicos" Type="Self.Tecnicos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposProductos">
+              <PropertyRef Name="tipoProdID" />
+            </Principal>
+            <Dependent Role="Tecnicos">
+              <PropertyRef Name="tecProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usrID_tecID">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Usuarios1" Type="Self.Usuarios" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Usuarios1">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UsuarioEmpresa">
           <End Role="Empresas" Type="Self.Empresas" Multiplicity="1" />
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
@@ -50,11 +229,83 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Usuarios_Empresas">
+          <End Role="Empresas" Type="Self.Empresas" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresas">
+              <PropertyRef Name="empID" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="usrEmpresaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuarios_RolesUsuarios">
+          <End Role="RolesUsuarios" Type="Self.RolesUsuarios" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RolesUsuarios">
+              <PropertyRef Name="rolID" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="usrRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="adsincidenciasDBModelStoreContainer">
           <EntitySet Name="Empresas" EntityType="Self.Empresas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estatus" EntityType="Self.Estatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="incidenciaDetalle" EntityType="Self.incidenciaDetalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Incidencias" EntityType="Self.Incidencias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RolesUsuarios" EntityType="Self.RolesUsuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tecnicos" EntityType="Self.Tecnicos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TiposProductos" EntityType="Self.TiposProductos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_incidenciaDetalle_Usuarios" Association="Self.FK_incidenciaDetalle_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="incidenciaDetalle" EntitySet="incidenciaDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incidencias_Estatus" Association="Self.FK_Incidencias_Estatus">
+            <End Role="Estatus" EntitySet="Estatus" />
+            <End Role="Incidencias" EntitySet="Incidencias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incidencias_Usuarios" Association="Self.FK_Incidencias_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Incidencias" EntitySet="Incidencias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incidencias_Usuarios1" Association="Self.FK_Incidencias_Usuarios1">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Incidencias" EntitySet="Incidencias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incidencias_Usuarios2" Association="Self.FK_Incidencias_Usuarios2">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Incidencias" EntitySet="Incidencias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Productos_TiposProductos" Association="Self.FK_Productos_TiposProductos">
+            <End Role="TiposProductos" EntitySet="TiposProductos" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tecnicos_TiposProductos" Association="Self.FK_Tecnicos_TiposProductos">
+            <End Role="TiposProductos" EntitySet="TiposProductos" />
+            <End Role="Tecnicos" EntitySet="Tecnicos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usrID_tecID" Association="Self.FK_usrID_tecID">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Usuarios1" EntitySet="Usuarios" />
+          </AssociationSet>
           <AssociationSet Name="FK_UsuarioEmpresa" Association="Self.FK_UsuarioEmpresa">
             <End Role="Empresas" EntitySet="Empresas" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuarios_Empresas" Association="Self.FK_Usuarios_Empresas">
+            <End Role="Empresas" EntitySet="Empresas" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuarios_RolesUsuarios" Association="Self.FK_Usuarios_RolesUsuarios">
+            <End Role="RolesUsuarios" EntitySet="RolesUsuarios" />
             <End Role="Usuarios" EntitySet="Usuarios" />
           </AssociationSet>
         </EntityContainer>
@@ -63,33 +314,67 @@
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="adsincidenciasDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
         <EntityContainer Name="adsincidenciasDBModelContainer" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Usuarios" EntityType="adsincidenciasDBModel.Usuario" />
           <EntitySet Name="Empresas" EntityType="adsincidenciasDBModel.Empresa" />
+          <EntitySet Name="Estatus" EntityType="adsincidenciasDBModel.Estatu" />
+          <EntitySet Name="incidenciaDetalles" EntityType="adsincidenciasDBModel.incidenciaDetalle" />
+          <EntitySet Name="Incidencias" EntityType="adsincidenciasDBModel.Incidencia" />
+          <EntitySet Name="Productos" EntityType="adsincidenciasDBModel.Producto" />
+          <EntitySet Name="RolesUsuarios" EntityType="adsincidenciasDBModel.RolesUsuario" />
+          <EntitySet Name="sysdiagrams" EntityType="adsincidenciasDBModel.sysdiagram" />
+          <EntitySet Name="Tecnicos" EntityType="adsincidenciasDBModel.Tecnico" />
+          <EntitySet Name="TiposProductos" EntityType="adsincidenciasDBModel.TiposProducto" />
+          <EntitySet Name="Usuarios" EntityType="adsincidenciasDBModel.Usuario" />
           <AssociationSet Name="FK_UsuarioEmpresa" Association="adsincidenciasDBModel.FK_UsuarioEmpresa">
             <End Role="Empresa" EntitySet="Empresas" />
             <End Role="Usuario" EntitySet="Usuarios" />
           </AssociationSet>
+          <AssociationSet Name="FK_Usuarios_Empresas" Association="adsincidenciasDBModel.FK_Usuarios_Empresas">
+            <End Role="Empresa" EntitySet="Empresas" />
+            <End Role="Usuario" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incidencias_Estatus" Association="adsincidenciasDBModel.FK_Incidencias_Estatus">
+            <End Role="Estatu" EntitySet="Estatus" />
+            <End Role="Incidencia" EntitySet="Incidencias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_incidenciaDetalle_Usuarios" Association="adsincidenciasDBModel.FK_incidenciaDetalle_Usuarios">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="incidenciaDetalle" EntitySet="incidenciaDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incidencias_Usuarios" Association="adsincidenciasDBModel.FK_Incidencias_Usuarios">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Incidencia" EntitySet="Incidencias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incidencias_Usuarios1" Association="adsincidenciasDBModel.FK_Incidencias_Usuarios1">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Incidencia" EntitySet="Incidencias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incidencias_Usuarios2" Association="adsincidenciasDBModel.FK_Incidencias_Usuarios2">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Incidencia" EntitySet="Incidencias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Productos_TiposProductos" Association="adsincidenciasDBModel.FK_Productos_TiposProductos">
+            <End Role="TiposProducto" EntitySet="TiposProductos" />
+            <End Role="Producto" EntitySet="Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuarios_RolesUsuarios" Association="adsincidenciasDBModel.FK_Usuarios_RolesUsuarios">
+            <End Role="RolesUsuario" EntitySet="RolesUsuarios" />
+            <End Role="Usuario" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tecnicos_TiposProductos" Association="adsincidenciasDBModel.FK_Tecnicos_TiposProductos">
+            <End Role="TiposProducto" EntitySet="TiposProductos" />
+            <End Role="Tecnico" EntitySet="Tecnicos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usrID_tecID" Association="adsincidenciasDBModel.FK_usrID_tecID">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Usuario1" EntitySet="Usuarios" />
+          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Usuario">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="usrNombre" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="usrCorreo" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="usrNombreUsusario" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="usrContrasena" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="usrEmpresaID" Type="Int32" Nullable="false" />
-          <Property Name="usrApPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="usrApMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Empresas" Relationship="adsincidenciasDBModel.FK_UsuarioEmpresa" FromRole="Usuario" ToRole="Empresa" />
-        </EntityType>
         <EntityType Name="Empresa">
           <Key>
             <PropertyRef Name="empID" />
           </Key>
-          <Property Name="empNombre" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
-          <Property Name="empID" Type="Int32" Nullable="false" />
+          <Property Name="empID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="empNombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="empCalle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="empNumInt" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="empNumExt" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
@@ -97,13 +382,130 @@
           <Property Name="empPais" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="empRFC" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="empCodPos" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="empTel1" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="empTel2" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="empExt1" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="empExt2" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="empLatitud" Type="Double" Nullable="false" />
-          <Property Name="empLongitud" Type="Double" Nullable="false" />
+          <Property Name="empTel1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="empTel2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="empExt1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="empExt2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="empLatitud" Type="Double" />
+          <Property Name="empLongitud" Type="Double" />
+          <Property Name="empMunicipio" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="empEstado" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Usuarios" Relationship="adsincidenciasDBModel.FK_UsuarioEmpresa" FromRole="Empresa" ToRole="Usuario" />
+          <NavigationProperty Name="Usuarios1" Relationship="adsincidenciasDBModel.FK_Usuarios_Empresas" FromRole="Empresa" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Estatu">
+          <Key>
+            <PropertyRef Name="estaID" />
+          </Key>
+          <Property Name="estaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="estaDescripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Incidencias" Relationship="adsincidenciasDBModel.FK_Incidencias_Estatus" FromRole="Estatu" ToRole="Incidencia" />
+        </EntityType>
+        <EntityType Name="incidenciaDetalle">
+          <Key>
+            <PropertyRef Name="inciDetID" />
+          </Key>
+          <Property Name="inciDetID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="inciDetIncidncia" Type="Int32" Nullable="false" />
+          <Property Name="inciDetDescripcion" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="inciDetHoras" Type="Int32" Nullable="false" />
+          <Property Name="inciDetUsr" Type="Int32" Nullable="false" />
+          <Property Name="inciDetFecha" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Usuario" Relationship="adsincidenciasDBModel.FK_incidenciaDetalle_Usuarios" FromRole="incidenciaDetalle" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Incidencia">
+          <Key>
+            <PropertyRef Name="inciID" />
+          </Key>
+          <Property Name="inciID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="inciProducto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="inciUsuarioAlta" Type="Int32" Nullable="false" />
+          <Property Name="inciFechaAlta" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="inciFechaCierre" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="inciDescripcion" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="inciTecnico" Type="Int32" Nullable="false" />
+          <Property Name="inciEstatus" Type="Int32" Nullable="false" />
+          <Property Name="inciUsrCierre" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Estatu" Relationship="adsincidenciasDBModel.FK_Incidencias_Estatus" FromRole="Incidencia" ToRole="Estatu" />
+          <NavigationProperty Name="Usuario" Relationship="adsincidenciasDBModel.FK_Incidencias_Usuarios" FromRole="Incidencia" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario1" Relationship="adsincidenciasDBModel.FK_Incidencias_Usuarios1" FromRole="Incidencia" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario2" Relationship="adsincidenciasDBModel.FK_Incidencias_Usuarios2" FromRole="Incidencia" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="prodID" />
+          </Key>
+          <Property Name="prodID" Type="Int32" Nullable="false" />
+          <Property Name="prodNombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="prodTipo" Type="Int32" Nullable="false" />
+          <Property Name="prodDescripcion" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="prodObservaciones" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TiposProducto" Relationship="adsincidenciasDBModel.FK_Productos_TiposProductos" FromRole="Producto" ToRole="TiposProducto" />
+        </EntityType>
+        <EntityType Name="RolesUsuario">
+          <Key>
+            <PropertyRef Name="rolID" />
+          </Key>
+          <Property Name="rolID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rolDescripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Usuarios" Relationship="adsincidenciasDBModel.FK_Usuarios_RolesUsuarios" FromRole="RolesUsuario" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tecnico">
+          <Key>
+            <PropertyRef Name="tecID" />
+          </Key>
+          <Property Name="tecID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tecProducto" Type="Int32" Nullable="false" />
+          <Property Name="tecApPaterno" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tecApMaterno" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tecNombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tecNombreUsusario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tecContrasena" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tecRol" Type="Int32" Nullable="false" />
+          <Property Name="tecCorreo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TiposProducto" Relationship="adsincidenciasDBModel.FK_Tecnicos_TiposProductos" FromRole="Tecnico" ToRole="TiposProducto" />
+        </EntityType>
+        <EntityType Name="TiposProducto">
+          <Key>
+            <PropertyRef Name="tipoProdID" />
+          </Key>
+          <Property Name="tipoProdID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipoProdDescripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Productos" Relationship="adsincidenciasDBModel.FK_Productos_TiposProductos" FromRole="TiposProducto" ToRole="Producto" />
+          <NavigationProperty Name="Tecnicos" Relationship="adsincidenciasDBModel.FK_Tecnicos_TiposProductos" FromRole="TiposProducto" ToRole="Tecnico" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usrApPaterno" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usrApMaterno" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usrNombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usrCorreo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usrNombreUsusario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usrContrasena" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usrEmpresaID" Type="Int32" Nullable="false" />
+          <Property Name="usrRol" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Empresa" Relationship="adsincidenciasDBModel.FK_UsuarioEmpresa" FromRole="Usuario" ToRole="Empresa" />
+          <NavigationProperty Name="Empresa1" Relationship="adsincidenciasDBModel.FK_Usuarios_Empresas" FromRole="Usuario" ToRole="Empresa" />
+          <NavigationProperty Name="incidenciaDetalles" Relationship="adsincidenciasDBModel.FK_incidenciaDetalle_Usuarios" FromRole="Usuario" ToRole="incidenciaDetalle" />
+          <NavigationProperty Name="Incidencias" Relationship="adsincidenciasDBModel.FK_Incidencias_Usuarios" FromRole="Usuario" ToRole="Incidencia" />
+          <NavigationProperty Name="Incidencias1" Relationship="adsincidenciasDBModel.FK_Incidencias_Usuarios1" FromRole="Usuario" ToRole="Incidencia" />
+          <NavigationProperty Name="Incidencias2" Relationship="adsincidenciasDBModel.FK_Incidencias_Usuarios2" FromRole="Usuario" ToRole="Incidencia" />
+          <NavigationProperty Name="RolesUsuario" Relationship="adsincidenciasDBModel.FK_Usuarios_RolesUsuarios" FromRole="Usuario" ToRole="RolesUsuario" />
+          <NavigationProperty Name="Usuarios1" Relationship="adsincidenciasDBModel.FK_usrID_tecID" FromRole="Usuario" ToRole="Usuario1" />
+          <NavigationProperty Name="Usuario1" Relationship="adsincidenciasDBModel.FK_usrID_tecID" FromRole="Usuario1" ToRole="Usuario" />
         </EntityType>
         <Association Name="FK_UsuarioEmpresa">
           <End Type="adsincidenciasDBModel.Empresa" Role="Empresa" Multiplicity="1" />
@@ -117,30 +519,138 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <Association Name="FK_Usuarios_Empresas">
+          <End Type="adsincidenciasDBModel.Empresa" Role="Empresa" Multiplicity="1" />
+          <End Type="adsincidenciasDBModel.Usuario" Role="Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="empID" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="usrEmpresaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incidencias_Estatus">
+          <End Type="adsincidenciasDBModel.Estatu" Role="Estatu" Multiplicity="1" />
+          <End Type="adsincidenciasDBModel.Incidencia" Role="Incidencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estatu">
+              <PropertyRef Name="estaID" />
+            </Principal>
+            <Dependent Role="Incidencia">
+              <PropertyRef Name="inciEstatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_incidenciaDetalle_Usuarios">
+          <End Type="adsincidenciasDBModel.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="adsincidenciasDBModel.incidenciaDetalle" Role="incidenciaDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="incidenciaDetalle">
+              <PropertyRef Name="inciDetUsr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incidencias_Usuarios">
+          <End Type="adsincidenciasDBModel.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="adsincidenciasDBModel.Incidencia" Role="Incidencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incidencia">
+              <PropertyRef Name="inciTecnico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incidencias_Usuarios1">
+          <End Type="adsincidenciasDBModel.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="adsincidenciasDBModel.Incidencia" Role="Incidencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incidencia">
+              <PropertyRef Name="inciUsrCierre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incidencias_Usuarios2">
+          <End Type="adsincidenciasDBModel.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="adsincidenciasDBModel.Incidencia" Role="Incidencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incidencia">
+              <PropertyRef Name="inciUsuarioAlta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Productos_TiposProductos">
+          <End Type="adsincidenciasDBModel.TiposProducto" Role="TiposProducto" Multiplicity="1" />
+          <End Type="adsincidenciasDBModel.Producto" Role="Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposProducto">
+              <PropertyRef Name="tipoProdID" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="prodTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuarios_RolesUsuarios">
+          <End Type="adsincidenciasDBModel.RolesUsuario" Role="RolesUsuario" Multiplicity="1" />
+          <End Type="adsincidenciasDBModel.Usuario" Role="Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RolesUsuario">
+              <PropertyRef Name="rolID" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="usrRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tecnicos_TiposProductos">
+          <End Type="adsincidenciasDBModel.TiposProducto" Role="TiposProducto" Multiplicity="1" />
+          <End Type="adsincidenciasDBModel.Tecnico" Role="Tecnico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposProducto">
+              <PropertyRef Name="tipoProdID" />
+            </Principal>
+            <Dependent Role="Tecnico">
+              <PropertyRef Name="tecProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usrID_tecID">
+          <End Type="adsincidenciasDBModel.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="adsincidenciasDBModel.Usuario" Role="Usuario1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Usuario1">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
     <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="adsincidenciasDBModelStoreContainer" CdmEntityContainer="adsincidenciasDBModelContainer">
-    <EntitySetMapping Name="Usuarios">
-      <EntityTypeMapping TypeName="IsTypeOf(adsincidenciasDBModel.Usuario)">
-        <MappingFragment StoreEntitySet="Usuarios">
-          <ScalarProperty Name="usrApMaterno" ColumnName="usrApMaterno" />
-                <ScalarProperty Name="usrApPaterno" ColumnName="usrApPaterno" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="usrNombre" ColumnName="usrNombre" />
-          <ScalarProperty Name="usrCorreo" ColumnName="usrCorreo" />
-          <ScalarProperty Name="usrNombreUsusario" ColumnName="usrNombreUsusario" />
-          <ScalarProperty Name="usrContrasena" ColumnName="usrContrasena" />
-          <ScalarProperty Name="usrEmpresaID" ColumnName="usrEmpresaID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Empresas">
-      <EntityTypeMapping TypeName="IsTypeOf(adsincidenciasDBModel.Empresa)">
-        <MappingFragment StoreEntitySet="Empresas">
-          <ScalarProperty Name="empLongitud" ColumnName="empLongitud" />
+          <EntitySetMapping Name="Empresas">
+            <EntityTypeMapping TypeName="adsincidenciasDBModel.Empresa">
+              <MappingFragment StoreEntitySet="Empresas">
+                <ScalarProperty Name="empEstado" ColumnName="empEstado" />
+                <ScalarProperty Name="empMunicipio" ColumnName="empMunicipio" />
+                <ScalarProperty Name="empLongitud" ColumnName="empLongitud" />
                 <ScalarProperty Name="empLatitud" ColumnName="empLatitud" />
                 <ScalarProperty Name="empExt2" ColumnName="empExt2" />
                 <ScalarProperty Name="empExt1" ColumnName="empExt1" />
@@ -153,12 +663,115 @@
                 <ScalarProperty Name="empNumExt" ColumnName="empNumExt" />
                 <ScalarProperty Name="empNumInt" ColumnName="empNumInt" />
                 <ScalarProperty Name="empCalle" ColumnName="empCalle" />
-                <ScalarProperty Name="empID" ColumnName="empID" />
                 <ScalarProperty Name="empNombre" ColumnName="empNombre" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-  </EntityContainerMapping>
+                <ScalarProperty Name="empID" ColumnName="empID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estatus">
+            <EntityTypeMapping TypeName="adsincidenciasDBModel.Estatu">
+              <MappingFragment StoreEntitySet="Estatus">
+                <ScalarProperty Name="estaDescripcion" ColumnName="estaDescripcion" />
+                <ScalarProperty Name="estaID" ColumnName="estaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="incidenciaDetalles">
+            <EntityTypeMapping TypeName="adsincidenciasDBModel.incidenciaDetalle">
+              <MappingFragment StoreEntitySet="incidenciaDetalle">
+                <ScalarProperty Name="inciDetFecha" ColumnName="inciDetFecha" />
+                <ScalarProperty Name="inciDetUsr" ColumnName="inciDetUsr" />
+                <ScalarProperty Name="inciDetHoras" ColumnName="inciDetHoras" />
+                <ScalarProperty Name="inciDetDescripcion" ColumnName="inciDetDescripcion" />
+                <ScalarProperty Name="inciDetIncidncia" ColumnName="inciDetIncidncia" />
+                <ScalarProperty Name="inciDetID" ColumnName="inciDetID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Incidencias">
+            <EntityTypeMapping TypeName="adsincidenciasDBModel.Incidencia">
+              <MappingFragment StoreEntitySet="Incidencias">
+                <ScalarProperty Name="inciUsrCierre" ColumnName="inciUsrCierre" />
+                <ScalarProperty Name="inciEstatus" ColumnName="inciEstatus" />
+                <ScalarProperty Name="inciTecnico" ColumnName="inciTecnico" />
+                <ScalarProperty Name="inciDescripcion" ColumnName="inciDescripcion" />
+                <ScalarProperty Name="inciFechaCierre" ColumnName="inciFechaCierre" />
+                <ScalarProperty Name="inciFechaAlta" ColumnName="inciFechaAlta" />
+                <ScalarProperty Name="inciUsuarioAlta" ColumnName="inciUsuarioAlta" />
+                <ScalarProperty Name="inciProducto" ColumnName="inciProducto" />
+                <ScalarProperty Name="inciID" ColumnName="inciID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Productos">
+            <EntityTypeMapping TypeName="adsincidenciasDBModel.Producto">
+              <MappingFragment StoreEntitySet="Productos">
+                <ScalarProperty Name="prodObservaciones" ColumnName="prodObservaciones" />
+                <ScalarProperty Name="prodDescripcion" ColumnName="prodDescripcion" />
+                <ScalarProperty Name="prodTipo" ColumnName="prodTipo" />
+                <ScalarProperty Name="prodNombre" ColumnName="prodNombre" />
+                <ScalarProperty Name="prodID" ColumnName="prodID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RolesUsuarios">
+            <EntityTypeMapping TypeName="adsincidenciasDBModel.RolesUsuario">
+              <MappingFragment StoreEntitySet="RolesUsuarios">
+                <ScalarProperty Name="rolDescripcion" ColumnName="rolDescripcion" />
+                <ScalarProperty Name="rolID" ColumnName="rolID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="adsincidenciasDBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tecnicos">
+            <EntityTypeMapping TypeName="adsincidenciasDBModel.Tecnico">
+              <MappingFragment StoreEntitySet="Tecnicos">
+                <ScalarProperty Name="tecCorreo" ColumnName="tecCorreo" />
+                <ScalarProperty Name="tecRol" ColumnName="tecRol" />
+                <ScalarProperty Name="tecContrasena" ColumnName="tecContrasena" />
+                <ScalarProperty Name="tecNombreUsusario" ColumnName="tecNombreUsusario" />
+                <ScalarProperty Name="tecNombre" ColumnName="tecNombre" />
+                <ScalarProperty Name="tecApMaterno" ColumnName="tecApMaterno" />
+                <ScalarProperty Name="tecApPaterno" ColumnName="tecApPaterno" />
+                <ScalarProperty Name="tecProducto" ColumnName="tecProducto" />
+                <ScalarProperty Name="tecID" ColumnName="tecID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TiposProductos">
+            <EntityTypeMapping TypeName="adsincidenciasDBModel.TiposProducto">
+              <MappingFragment StoreEntitySet="TiposProductos">
+                <ScalarProperty Name="tipoProdDescripcion" ColumnName="tipoProdDescripcion" />
+                <ScalarProperty Name="tipoProdID" ColumnName="tipoProdID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="adsincidenciasDBModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="usrRol" ColumnName="usrRol" />
+                <ScalarProperty Name="usrEmpresaID" ColumnName="usrEmpresaID" />
+                <ScalarProperty Name="usrContrasena" ColumnName="usrContrasena" />
+                <ScalarProperty Name="usrNombreUsusario" ColumnName="usrNombreUsusario" />
+                <ScalarProperty Name="usrCorreo" ColumnName="usrCorreo" />
+                <ScalarProperty Name="usrNombre" ColumnName="usrNombre" />
+                <ScalarProperty Name="usrApMaterno" ColumnName="usrApMaterno" />
+                <ScalarProperty Name="usrApPaterno" ColumnName="usrApPaterno" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
@@ -171,8 +784,8 @@
     <edmx:Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="False" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Predeterminado" />
         <DesignerProperty Name="UseLegacyProvider" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
       </DesignerInfoPropertySet>

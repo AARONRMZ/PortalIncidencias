@@ -1,0 +1,79 @@
+﻿@model adsincidencias.ViewModels.TecnicoViewModel
+
+@{
+    ViewBag.Title = "Crear";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<div class="row">
+<div id="panel" class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h2>Registro de nuevo Técnico</h2>
+        </div>
+        <form method="post" id="formCrearTecnico" class="form-horizontal" role="form" data-toggle="validator">
+            <div class="panel-body">
+                @if (!string.IsNullOrEmpty(ViewBag.Msg))
+                {
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        @ViewBag.Msg
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                }
+                <div style="margin-bottom: 25px" class="input-group">
+                    <span class="input-group-addon" data-toggle="tooltip" data-placement="left" title="Nombre del tecnico"><i class="glyphicon glyphicon-credit-card"></i></span>
+                    @Html.TextBoxFor(u => u.Nombre, new Dictionary<string, Object> { { "class", "form-control" }, { "id", "tecnicoInput" }, { "type", "text" }, { "name", "tecnicoInput" }, { "placeholder", "Nombre" }, { "required", "" } })
+                </div>
+                <div style="margin-bottom: 25px;" class="input-group">
+                    <span class="input-group-addon" data-toggle="tooltip" data-placement="left" title="Apellido paterno"><i class="glyphicon glyphicon-arrow-right"></i></span>
+                    @Html.TextBoxFor(u => u.Paterno, new Dictionary<string, Object> { { "class", "form-control" }, { "id", "appInput" }, { "type", "text" }, { "name", "appInput" }, { "placeholder", "Apellido paterno" }, { "required", "" } })
+                </div>
+                <div style="margin-bottom: 25px;" class="input-group">
+                    <span class="input-group-addon" data-toggle="tooltip" data-placement="left" title="Apellido materno"><i class="glyphicon glyphicon-arrow-right"></i></span>
+                    @Html.TextBoxFor(u => u.Materno, new Dictionary<string, Object> { { "class", "form-control" }, { "id", "apmInput" }, { "type", "text" }, { "name", "apmInput" }, { "placeholder", "Apellido materno" }, { "required", "" } })
+                </div>
+                <div style="margin-bottom: 25px" class="input-group">
+                    <span class="input-group-addon" data-toggle="tooltip" data-placement="left" title="Correo eléctronico"><i class="glyphicon glyphicon-envelope"></i></span>
+                    @Html.TextBoxFor(u => u.Correo, new Dictionary<string, Object> { { "class", "form-control" }, { "id", "correoInput" }, { "type", "email" }, { "name", "correoInput" }, { "placeholder", "Correo eléctronico" }, { "required", "" } })
+                </div>
+                <div style="margin-bottom: 25px;" class="input-group">
+                    <span class="input-group-addon" data-toggle="tooltip" data-placement="left" title="Empresa"><i class="glyphicon glyphicon-credit-card"></i></span>
+                    @Html.DropDownListFor(u => u.TipoProd, Model.TiposProductos, "Especialidad", new Dictionary<string, Object> { { "class", "form-control" }, { "id", "empresa" }, { "type", "text" }, { "name", "empresa" }, { "placeholder", "--Selecciona--" }, { "required", "" } })
+                </div>
+                <div style="margin-bottom: 25px;" class="input-group">
+                    <span class="input-group-addon" data-toggle="tooltip" data-placement="left" title="Contraseña"><i class="glyphicon glyphicon-lock"></i></span>
+                   
+                    @Html.TextBoxFor(u => u.Contrasena1, new Dictionary<string, Object> { { "class", "form-control" }, { "id", "passInput" }, { "type", "password" }, { "name", "passInput" }, { "placeholder", "Contraseña" }, { "required", "" } })
+                </div>
+                <div style="margin-bottom: 25px" class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    
+                    @Html.TextBoxFor(u => u.Contrasena2, new Dictionary<string, Object> { { "class", "form-control" }, { "id", "passConfInput" }, { "type", "password" }, { "name", "passConfInput" }, { "placeholder", "Confirmar contraseña" }, { "required", "" } })
+                </div>
+                @if (!string.IsNullOrEmpty(ViewBag.Error))
+                {
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        @ViewBag.Error
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+
+                }
+
+            </div>
+            <div class="panel-footer">
+                <div style="margin-top:10px" class="form-group row">
+                    <div class="col-lg-3 col-lg-offset-9 col-md-4 col-md-offset-8 col-sm-5 col-sm-offset-8 col-xs-10 col-xs-offset-2">
+                        <button type="submit" class="btn" value="" id="btnGuardarUsuario" data-toggle="tooltip" data-placement="left" title="Guardar">
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </button>
+                        <button type="reset" class="btn" value="" id="btnCancelarUsuario" data-toggle="tooltip" data-placement="left" title="Cancelar">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>

@@ -1,0 +1,41 @@
+﻿
+@model adsincidencias.entities.Tecnico
+@{
+    ViewBag.Title = "Tecnicos";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@Scripts.Render("~/Scripts/Tecnicos.js")
+
+
+<div class="jumbotron">
+    <h1>Técnicos</h1>
+    <div class="container">
+        <a href=@Url.Action("Crear","Tecnicos")>
+            <img src="~/imagenes/add.png" class="img-responsive" width="80" height="80" alt="Nuevo Usuario">
+        </a>
+        <hr />
+        <table id="dataTableTecnicos" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Nombre</th>
+                    <th>Nombre de usuario</th>
+                    <th>Correo</th>
+                    <th>Especialidad</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th></th>
+                    <th>Nombre</th>
+                    <th>Nombre de usuario</th>
+                    <th>Correo</th>
+                    <th>Especialidad</th>
+                </tr>
+            </tfoot>
+            <tbody></tbody>
+        </table>
+    </div>
+    </div>
+

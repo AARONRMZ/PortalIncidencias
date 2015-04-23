@@ -4,10 +4,28 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d717268e65c0497e9fc1596ba7b89fff" Name="Diagram1" >
-        <EntityTypeShape EntityType="adsincidenciasDBModel.Usuario" Width="1.5" PointX="4.75" PointY="2" />
-        <EntityTypeShape EntityType="adsincidenciasDBModel.Empresa" Width="1.5" PointX="7.375" PointY="2" />
+      <Diagram DiagramId="d717268e65c0497e9fc1596ba7b89fff" Name="Diagram1" ZoomLevel="67" >
+        <EntityTypeShape EntityType="adsincidenciasDBModel.Empresa" Width="1.5" PointX="0.75" PointY="3.25" />
+        <EntityTypeShape EntityType="adsincidenciasDBModel.Estatu" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="adsincidenciasDBModel.incidenciaDetalle" Width="1.5" PointX="5.25" PointY="8.625" />
+        <EntityTypeShape EntityType="adsincidenciasDBModel.Incidencia" Width="1.5" PointX="5.25" PointY="3.75" />
+        <EntityTypeShape EntityType="adsincidenciasDBModel.Producto" Width="1.5" PointX="10" PointY="2.25" />
+        <EntityTypeShape EntityType="adsincidenciasDBModel.RolesUsuario" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="adsincidenciasDBModel.sysdiagram" Width="1.5" PointX="0.75" PointY="8.875" />
+        <EntityTypeShape EntityType="adsincidenciasDBModel.Tecnico" Width="1.5" PointX="10" PointY="5.125" />
+        <EntityTypeShape EntityType="adsincidenciasDBModel.TiposProducto" Width="1.5" PointX="7.75" PointY="4.25" />
+        <EntityTypeShape EntityType="adsincidenciasDBModel.Usuario" Width="1.5" PointX="3" PointY="3.25" />
         <AssociationConnector Association="adsincidenciasDBModel.FK_UsuarioEmpresa" />
+        <AssociationConnector Association="adsincidenciasDBModel.FK_Usuarios_Empresas" />
+        <AssociationConnector Association="adsincidenciasDBModel.FK_Incidencias_Estatus" />
+        <AssociationConnector Association="adsincidenciasDBModel.FK_incidenciaDetalle_Usuarios" />
+        <AssociationConnector Association="adsincidenciasDBModel.FK_Incidencias_Usuarios" />
+        <AssociationConnector Association="adsincidenciasDBModel.FK_Incidencias_Usuarios1" />
+        <AssociationConnector Association="adsincidenciasDBModel.FK_Incidencias_Usuarios2" />
+        <AssociationConnector Association="adsincidenciasDBModel.FK_Productos_TiposProductos" />
+        <AssociationConnector Association="adsincidenciasDBModel.FK_Usuarios_RolesUsuarios" />
+        <AssociationConnector Association="adsincidenciasDBModel.FK_Tecnicos_TiposProductos" />
+        <AssociationConnector Association="adsincidenciasDBModel.FK_usrID_tecID" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
